@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ratpack}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Zeke Sikelianos"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/sinatra/ratpack.rb",
+     "ratpack.gemspec",
      "test/helper.rb",
      "test/test_ratpack.rb"
   ]
