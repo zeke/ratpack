@@ -15,7 +15,6 @@ module Sinatra
   
     # Accepts a single filename or an array of filenames (with or without .css extension)
     # Assumes stylesheets are in public/stylesheets
-    # TODO: allow for media type to specified
     def stylesheet_link_tag(string_or_array)
       files = string_or_array.is_a?(Array) ? string_or_array : [string_or_array]
       files.map do |file|
@@ -24,21 +23,26 @@ module Sinatra
       end.join("\n")
     end
         
-    def image(src,options={})
-      options[:src] = src.include?("/") ? src : "/images/#{src}"
+    # Accepts a full URL, an image filename, or a path underneath /public/images/
+    def image_tag(src,options={})
+      options[:src] = src.include?("://") ? src : "/images/#{src}"
       tag(:img, options)
     end
-  
-    def link(content,href,options={})
+    
+    # Works like link_to, but href is optional. If no href supplied, content is used as href
+    def link_to(content,href=nil,options={})
+      href ||= content
       options.update :href => href
       content_tag :a, content, options
     end
   
+    # Just like Rails' content_tag
     def content_tag(name,content,options={})
       options = options.map{ |k,v| "#{k}='#{v}'" }.join(" ")
       "<#{name} #{options}>#{content}</#{name}>"
     end
   
+    # Just like Rails' tag
     def tag(name,options={})
       options = options.map{ |k,v| "#{k}='#{v}'" }.join(" ")
       "<#{name} #{options} />"
@@ -47,7 +51,6 @@ module Sinatra
     # Give this helper an array, and get back a string of <li> elements. 
     # The first item gets a class of first and the last, well.. last. 
     # This makes it easier to apply CSS styles to lists, be they ordered or unordered.
-    # http://zeke.tumblr.com/post/98025647/a-nice-little-view-helper-for-generating-list-items
     def convert_to_list_items(items)
       items.inject([]) do |all, item|
         css = []

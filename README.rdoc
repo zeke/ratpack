@@ -1,17 +1,30 @@
 = ratpack
 
-Description goes here.
+Common Rails view helpers, rewritten and wrapped up in a gem for use in your Sinatra app.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== Installation
+
+Install {gemcutter}[http://gemcutter.org] if you haven't already:
+
+  sudo gem install gemcutter
+  gem tumble
+
+Install the ratpack gem:
+
+  sudo gem install ratpack
+  
+Drop this line in your app:
+
+  require 'sinatra/ratpack'
+
+== Usage
+
+See auto-generated documentation at {rdoc.info/projects/zeke/ratpack}[http://rdoc.info/projects/zeke/ratpack]
+
+== Colophon
+
+Thanks to the Sinatra page {Writing Extensions}[http://www.sinatrarb.com/extensions.html]
+Gem built with http://github.com/technicalpickles/jeweler/
 
 == Copyright
 
