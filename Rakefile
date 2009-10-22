@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "ratpack"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A set of view helpers for Sinatra. Inspired by Rails' ActionView helpers}
+    gem.description = %Q{link_to, content_tag, stylesheet_link_tag, javascript_include_tag, etc}
     gem.email = "zeke@sikelianos.com"
     gem.homepage = "http://github.com/zeke/ratpack"
     gem.authors = ["Zeke Sikelianos"]
