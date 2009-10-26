@@ -5,6 +5,10 @@ module Sinatra
 
     # Accepts a single filename or an array of filenames (with or without .js extension)
     # Assumes javascripts are in public/javascripts
+    #
+    #   javascript_include_tag "jquery.min"               # <script charset="utf-8" src="/javascripts/jquery.min.js" type="text/javascript"></script>
+    #   javascript_include_tag "jquery.min.js"            # <script charset="utf-8" src="/javascripts/jquery.min.js" type="text/javascript"></script>
+    #   javascript_include_tag %w(day night)              # <script charset="utf-8" src="/javascripts/day.js" type="text/javascript"></script>\n<script charset="utf-8" src="/javascripts/night.js" type="text/javascript"></script>
     def javascript_include_tag(string_or_array, *args)
       files = string_or_array.is_a?(Array) ? string_or_array : [string_or_array]
       options = {
@@ -22,6 +26,9 @@ module Sinatra
   
     # Accepts a single filename or an array of filenames (with or without .css extension)
     # Assumes stylesheets are in public/stylesheets
+    #
+    #   stylesheet_link_tag "styles", :media => "print"   # <link charset="utf-8" href="/stylesheets/styles.css" media="print" rel="stylesheet" type="text/css" />
+    #   stylesheet_link_tag %w(winter summer)             # <link charset="utf-8" href="/stylesheets/winter.css" media="projection" rel="stylesheet" type="text/css" />\n<link charset="utf-8" href="/stylesheets/summer.css" media="projection" rel="stylesheet" type="text/css" />
     def stylesheet_link_tag(string_or_array, *args)
       files = string_or_array.is_a?(Array) ? string_or_array : [string_or_array]
       options = {
@@ -40,12 +47,19 @@ module Sinatra
     end
         
     # Accepts a full URL, an image filename, or a path underneath /public/images/
+    #
+    #   image_tag "pony.png"                        # <image src="/images/pony.png" />
+    #   image_tag "http://foo.com/pony.png"         # <image src="http://foo.com/pony.png" />
     def image_tag(src, options={})
       options[:src] = url_for(src)
       tag(:img, options)
     end
     
     # Works like link_to, but href is optional. If no href supplied, content is used as href
+    #
+    #   link_to "grub", "/food", :class => "eats"   # <a href="/food" class="eats">grub</a>
+    #   link_to "http://foo.com"                    # <a href="http://foo.com">http://foo.com</a>
+    #   link_to "home"                              # <a href="/home">home</a>
     def link_to(content,href=nil,options={})
       href ||= content
       options.update :href => url_for(href)
@@ -53,25 +67,17 @@ module Sinatra
     end
   
     # Just like Rails' content_tag
+    #
+    #   content_tag :div, "hello", :id => "foo"     # <div id="foo">hello</div>
     def content_tag(name,content,options={})
       "<#{name} #{options.to_html_attrs}>#{content}</#{name}>"
     end
   
     # Just like Rails' tag
+    #
+    #   tag :br, :class => "foo"                    # <br class="foo" />
     def tag(name,options={})
       "<#{name} #{options.to_html_attrs} />"
-    end
-
-    # Give this helper an array, and get back a string of <li> elements. 
-    # The first item gets a class of first and the last, well.. last. 
-    # This makes it easier to apply CSS styles to lists, be they ordered or unordered.
-    def convert_to_list_items(items)
-      items.inject([]) do |all, item|
-        css = []
-        css << "first" if items.first == item
-        css << "last" if items.last == item
-        all << content_tag(:li, item, :class => css.join(" "))
-      end.join("\n")
     end
     
     # Construct a link to +url_fragment+, which should be given relative to
@@ -81,10 +87,10 @@ module Sinatra
     # include the site name and port number.  (The latter is typically
     # necessary for links in RSS feeds.)  Example usage:
     #
-    #   url_for "/"                       # Returns "/myapp/"
-    #   url_for "/foo"                    # Returns "/myapp/foo"
-    #   url_for "/foo", :full             # Returns "http://example.com/myapp/foo"
-    #   url_for "http://bar.com"          # Returns "http://bar.com"
+    #   url_for "/"                                 # "/myapp/"
+    #   url_for "/foo"                              # "/myapp/foo"
+    #   url_for "/foo", :full                       # "http://example.com/myapp/foo"
+    #   url_for "http://bar.com"                    # "http://bar.com"
     def url_for url_fragment, mode=:path_only
       return url_fragment if url_fragment.include? "://"
       url_fragment = "/#{url_fragment}" unless url_fragment.starts_with? "/"

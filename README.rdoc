@@ -1,6 +1,6 @@
 = ratpack
 
-Common Rails view helpers, rewritten and wrapped up in a gem for use in your Sinatra app.
+A set of view helpers for Sinatra. Inspired by Rails' ActionView helpers.
 
 == Installation
 
@@ -15,6 +15,7 @@ Install the ratpack gem:
   
 Drop this line in your app:
 
+  gem 'ratpack'
   require 'sinatra/ratpack'
 
 == Usage
@@ -25,6 +26,7 @@ See auto-generated documentation at {rdoc.info/projects/zeke/ratpack}[http://rdo
 
 * Thanks to the Sinatra page on {Writing Extensions}[http://www.sinatrarb.com/extensions.html]
 * The url_for method was snagged from {http://github.com/emk/sinatra-url-for/}[github.com/emk/sinatra-url-for]
+* Tests modified from {http://github.com/wbzyl/sinatra-static-assets/}[wbzyl/sinatra-static-assets]
 * Gem built with {http://github.com/technicalpickles/jeweler/}[Jeweler]
 
 == Copyright
