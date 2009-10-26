@@ -23,8 +23,9 @@ See auto-generated documentation at {rdoc.info/projects/zeke/ratpack}[http://rdo
 
 == Colophon
 
-Thanks to the Sinatra page {Writing Extensions}[http://www.sinatrarb.com/extensions.html]
-Gem built with http://github.com/technicalpickles/jeweler/
+* Thanks to the Sinatra page on {Writing Extensions}[http://www.sinatrarb.com/extensions.html]
+* The url_for method was snagged from {http://github.com/emk/sinatra-url-for/}[github.com/emk/sinatra-url-for]
+* Gem built with {http://github.com/technicalpickles/jeweler/}[Jeweler]
 
 == Copyright
 

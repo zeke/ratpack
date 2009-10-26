@@ -1,5 +1,5 @@
-require 'rubygems'
 require 'rake'
+require 'rake/testtask'
 
 begin
   require 'jeweler'
@@ -10,19 +10,21 @@ begin
     gem.email = "zeke@sikelianos.com"
     gem.homepage = "http://github.com/zeke/ratpack"
     gem.authors = ["Zeke Sikelianos"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+
+    gem.files = %w{TODO VERSION.yml} + FileList['lib/**/*.rb', 'test/**/*.rb', 'examples/**/*']    
+    gem.add_runtime_dependency 'rack', '>=1.0.0'
+    gem.add_runtime_dependency 'sinatra', '>=0.9.1'
+    gem.add_development_dependency 'rack-test', '>=0.3.0'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib' << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
 end
 
 begin
@@ -39,7 +41,6 @@ rescue LoadError
 end
 
 task :test => :check_dependencies
-
 task :default => :test
 
 require 'rake/rdoctask'
