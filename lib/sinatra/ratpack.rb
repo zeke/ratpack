@@ -51,6 +51,7 @@ module Sinatra
     #   image_tag "pony.png"                        # <image src="/images/pony.png" />
     #   image_tag "http://foo.com/pony.png"         # <image src="http://foo.com/pony.png" />
     def image_tag(src, options={})
+      src = "/images/#{src}" unless src.include? "://" # Add images directory to path if not a full URL
       options[:src] = url_for(src)
       tag(:img, options)
     end
