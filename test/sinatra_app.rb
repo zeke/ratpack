@@ -18,6 +18,7 @@ get "/image_tag" do
   content_type "text/plain"
   <<"EOD"
 #{image_tag("foo.jpg", :alt => "[foo image]")}
+#{image_tag("http://example.com/bar.png", :alt => "[bar image]")}
 EOD
 end
 

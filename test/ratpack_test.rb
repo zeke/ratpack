@@ -47,6 +47,7 @@ EOD
     assert last_response.ok?
     assert_equal last_response.body,  <<EOD
 <img alt="[foo image]" src="/bar/images/foo.jpg" />
+<img alt="[bar image]" src="http://example.com/bar.png" />
 EOD
   end
   
