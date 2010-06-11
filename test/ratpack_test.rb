@@ -29,6 +29,7 @@ EOD
 <script charset="utf-8" src="http://example.com/autumn.js" type="text/javascript"></script>
 <script charset="utf-8" src="/bar/javascripts/day.js" type="text/javascript"></script>
 <script charset="utf-8" src="/bar/javascripts/night.js" type="text/javascript"></script>
+<script charset="utf-8" src="/bar/evening.js" type="text/javascript"></script>
 EOD
   end
 
@@ -39,6 +40,7 @@ EOD
 <link charset="utf-8" href="/bar/stylesheets/winter.css" media="projection" rel="stylesheet" type="text/css" />
 <link charset="utf-8" href="/bar/stylesheets/summer.css" media="projection" rel="stylesheet" type="text/css" />
 <link charset="utf-8" href="http://example.com/autumn.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link charset="utf-8" href="/bar/spring.css" media="screen, projection" rel="stylesheet" type="text/css" />
 EOD
   end
   

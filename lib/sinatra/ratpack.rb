@@ -18,7 +18,7 @@ module Sinatra
 
       files.map do |file|
         path = "#{ file.gsub(/\.js/i, "") }.js" # Append .js if needed
-        path = "/javascripts/#{path}" unless path.include? "://" # Add stylesheets directory to path if not a full URL
+        path = "/javascripts/#{path}" unless path =~ %r((^/)|(://)) # Prepend javascripts directory to path if not a full URL or the root is specified
         options[:src] = url_for(path)
         content_tag(:script, "", options)
       end.join("\n")
@@ -40,7 +40,7 @@ module Sinatra
 
       files.map do |file|
         path = "#{ file.gsub(/\.css/i, "") }.css" # Append .css if needed
-        path = "/stylesheets/#{path}" unless path.include? "://" # Add stylesheets directory to path if not a full URL
+        path = "/stylesheets/#{path}" unless path =~ %r((^/)|(://)) # Prepend stylesheets directory to path if not a full URL or the root is specified
         options[:href] = url_for(path)
         tag(:link, options)        
       end.join("\n")

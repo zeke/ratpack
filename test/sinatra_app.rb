@@ -27,6 +27,7 @@ get "/stylesheet_link_tag" do
   <<"EOD"
 #{stylesheet_link_tag(%w(winter summer), :media => "projection")}
 #{stylesheet_link_tag("http://example.com/autumn.css")}
+#{stylesheet_link_tag("/spring")}
 EOD
 end
 
@@ -36,6 +37,7 @@ get "/javascript_include_tag" do
 #{javascript_include_tag "summer.js"}
 #{javascript_include_tag "http://example.com/autumn.js"}
 #{javascript_include_tag %w(day night)}
+#{javascript_include_tag "/evening"}
 EOD
 end
 
